@@ -7,7 +7,7 @@
 	// Request bus data from MBTA
 	async function getBusLocations(){
 		// MBTA real-time data for bus route 1
-		const url = 'https://api-v3.mbta.com/vehicles?filter[route]=32&include=trip';
+		const url = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
 
 		var response = await fetch(url);
 		var json 	 = await response.json();
@@ -33,6 +33,7 @@
 				',lat' + lat +
 				',long' + long
 			);
+
 		});
 		// timer
 		setTimeout(run, 15000);
