@@ -4,56 +4,62 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" />
-<title>Add a default marker</title>
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
-<link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
-<style>
-  body { margin: 0; padding: 0; }
-  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-</style>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <title>Add a default marker</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
+      <style>
+        body {margin:   0;
+              padding:  0; }
+        #map {position: absolute;
+              top:      0;
+              bottom:   0;
+              width:    100%; }
+      </style>
+  </head>
 <body>
-<div id="map"></div>
 
-<script>
+  <div id="map"></div>
 
-// api token
+  <script>
 
-// map instance
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v11',
-    center: [-71.104081, 42.365554],
-    zoom: 14
-});
+    // api token
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rvcm1tYXRhIiwiYSI6ImNremVwMjhxZzA3ZmMydm16d2JlOG9oOGUifQ.My6NECnslilyi-VyQiOCIg';
 
-// bus data from MBTA
-async function routeData(){
-  var url  = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
-  var res  = await fetch(url);
-  var data = await res.json();
-  return data;  
-}
+    // map instance
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [-71.104081, 42.365554],
+        zoom: 14
+    });
 
-// array of buses, signature is {id: bus.id, marker: marker}
-var buses = [];
+    // bus data from MBTA
+    async function routeData(){
+      var url  = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
+      var res  = await fetch(url);
+      var data = await res.json();
+      return data;  
+    }
 
-// update bus positions on map
-async function move(){
+    // array of buses, signature is {id: bus.id, marker: marker}
+    var buses = [];
 
-  // request bus data
+    // update bus positions on map
+    async function move(){
 
-  // loop through buses, update positions
+    // request bus data
 
- // timer
+    // loop through buses, update positions
 
-}
-move();
+  // timer
 
-</script>
+  }
+  move();
+
+  </script>
  
 </body>
 </html>

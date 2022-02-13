@@ -4,18 +4,41 @@
 
 <script>
 
-// Request bus data from MBTA
-async function getBusLocations(){
-	// MBTA real-time data for bus route 1
-	const url = 'https://api-v3.mbta.com/vehicles?filter[route]=1&include=trip';
-}
+	// Request bus data from MBTA
+	async function getBusLocations(){
+		// MBTA real-time data for bus route 1
+		const url = 'https://api-v3.mbta.com/vehicles?filter[route]=32&include=trip';
 
-// request data on a timer
-async function run(){
-	// request bus data
+		var response = await fetch(url);
+		var json 	 = await response.json();
 
-	// timer
-}
-run();
+		// console.log(json);
+		return json;
+		
+	}
+
+	// request data on a timer
+	async function run(){
+
+		// request bus data
+		var buses = await getBusLocations();
+
+		//  loop buses
+		buses.data.forEach(function(bus){
+			var id = bus.id;
+			var lat = bus.attributes.latitude;
+			var long = bus.attributes.longitude;
+			console.log(
+				'id:' + id + 
+				',lat' + lat +
+				',long' + long
+			);
+		});
+		// timer
+		setTimeout(run, 15000);
+	}
+
+	run();
+	getBusLocations();
 
 </script>
