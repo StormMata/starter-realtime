@@ -56,14 +56,14 @@
 
             // Markers and bus variables
             var buses      = [];
-            let mapMarkers = [];
+            let BusMarkers = [];
 
 
             // update bus positions on map
             async function move(){
 
                 // remove any existing markers
-                mapMarkers.forEach((marker) => marker.remove())
+                BusMarkers.forEach((marker) => marker.remove())
 
                 // request bus data
                 var buses = await routeData();
@@ -85,7 +85,7 @@
                     const marker = new mapboxgl.Marker()
                         .setLngLat([long,lat])
                         .addTo(map)
-                        mapMarkers.push(marker) 
+                        BusMarkers.push(marker) 
 
                 });
 
