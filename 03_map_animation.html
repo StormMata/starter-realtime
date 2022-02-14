@@ -4,102 +4,116 @@
 
 <!-- Route 32 -->
 
-
 <!DOCTYPE html>
+
 <html>
-  <head>
+
+    <head>
+
     <meta charset="utf-8" />
-    <title>Add a default marker</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Map Marker</title>
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
-      <style>
-        body {margin:   0;
-              padding:  0;}
 
-        #map {position: absolute;
-              top:      0;
-              bottom:   0;
-              width:    100%;}
+        <style>
+            body {margin:   0;
+                    padding:  0;}
 
-      .map-overlay {position: absolute;
-                    left:     0;
-                    padding:  10px;}
-      
-      </style>
-  </head>
-<body>
-<div id="map"></div>
+            #map {position: absolute;
+                    top:      0;
+                    bottom:   0;
+                    width:    100%;}
 
-<div class="map-overlay top">
-  <button style="font-size: 2em" onclick="move()">
-    Show Route
-  </button>
-</div>
- 
-<script>
-  // api token
-  mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rvcm1tYXRhIiwiYSI6ImNremVwMjhxZzA3ZmMydm16d2JlOG9oOGUifQ.My6NECnslilyi-VyQiOCIg';
+        .map-overlay {position: absolute;
+                      left:     0;
+                      padding:  10px;}
 
-  // map instance
-  var map = new mapboxgl.Map({
-      container: 'map',
-      style:     'mapbox://styles/mapbox/streets-v11',
-      center:    [-71.119215, 42.270860],
-      zoom:      12});
+        </style>
 
-  // map marker
-  var marker = new mapboxgl.Marker()
-      .setLngLat([-71.115500, 42.297230])
-      .addTo(map);
+    </head>
 
-  const busStops = [
-      [-71.116160, 42.296030],
-      [-71.117710, 42.292410],
-      [-71.118180, 42.290140],
-      [-71.118590, 42.286760],
-      [-71.119210, 42.282700],
-      [-71.118490, 42.276420],
-      [-71.119215, 42.270860],
-      [-71.119940, 42.265300],
-      [-71.122170, 42.261600],
-      [-71.123930, 42.256610],
-      [-71.124800, 42.252060],
-      [-71.128720, 42.246390],
-      [-71.130710, 42.242320],
-      [-71.131900, 42.237240]
-  ];
+    <body>
 
-  // animate marker
-  let counter = 0;
-  var backward = 0;
+        <div id="map"></div>
 
-  var walker = function(){
+        <div class="map-overlay top">
 
-    if(backward == 1){
-        counter--;
-        if(counter == 0){backward = 0};
-      };
+            <button style="font-size: 2em" onclick="move()">
+                Show Route
+            </button>
 
-    if(counter < busStops.length && backward == 0){
-        counter++;
-        if(counter == busStops.length){
-          counter--;
-          backward = 1};
-    };
-    
-    // console.log(counter)
-    marker.setLngLat(busStops[counter]);    
-    move();
-  };
+        </div>
+        
+        <script>
+            // api token
+            mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rvcm1tYXRhIiwiYSI6ImNremVwMjhxZzA3ZmMydm16d2JlOG9oOGUifQ.My6NECnslilyi-VyQiOCIg';
 
-  function move(){
+            // map instance
+            var map = new mapboxgl.Map({
+                container: 'map',
+                style:     'mapbox://styles/mapbox/streets-v11',
+                center:    [-71.119215, 42.270860],
+                zoom:      12});
 
-    setTimeout(walker, 250);
-    
-  };
+            // map marker
+            var marker = new mapboxgl.Marker()
+                .setLngLat([-71.115500, 42.297230])
+                .addTo(map);
 
-</script>
- 
-</body>
+            // station coordinates
+            const busStops = [
+                [-71.116160, 42.296030],
+                [-71.117710, 42.292410],
+                [-71.118180, 42.290140],
+                [-71.118590, 42.286760],
+                [-71.119210, 42.282700],
+                [-71.118490, 42.276420],
+                [-71.119215, 42.270860],
+                [-71.119940, 42.265300],
+                [-71.122170, 42.261600],
+                [-71.123930, 42.256610],
+                [-71.124800, 42.252060],
+                [-71.128720, 42.246390],
+                [-71.130710, 42.242320],
+                [-71.131900, 42.237240]
+            ];
+
+            // animate marker
+            let counter = 0;
+            var backward = 0;
+
+            // walk the coordinate counter
+            var walker = function(){
+
+                // walk back
+                if(backward == 1){
+                    counter--;
+                    if(counter == 0){backward = 0};
+                };
+
+                // walk forward
+                if(counter < busStops.length && backward == 0){
+                    counter++;
+                    if(counter == busStops.length){
+                        counter--;
+                        backward = 1};
+                };
+                
+                // console.log(counter)
+                marker.setLngLat(busStops[counter]); 
+
+                move();
+            };
+
+            // timer
+            function move(){
+
+                setTimeout(walker, 250);
+                
+            };
+
+        </script>
+        
+    </body>
+
 </html>
