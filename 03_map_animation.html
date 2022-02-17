@@ -1,8 +1,7 @@
-<!-- -------------------------------- -->
-<!-- ------- Marker Animation ------- -->
-<!-- -------------------------------- -->
-
-<!-- Route 32 -->
+<!-- ------------------------------------------ -->
+<!-- ----------- HWK 1 - Question 3 ----------- -->
+<!-- ------- Route: 32 Marker Animation ------- -->
+<!-- ------------------------------------------ -->
 
 <!DOCTYPE html>
 
@@ -16,6 +15,7 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
 
         <style>
+
             body {margin:   0;
                   padding:  0;}
 
@@ -51,7 +51,7 @@
             // map instance
             var map = new mapboxgl.Map({
                 container: 'map',
-                style:     'mapbox://styles/mapbox/streets-v11',
+                style:     'mapbox://styles/mapbox/outdoors-v11',
                 center:    [-71.119215, 42.270860],
                 zoom:      12});
 
@@ -89,8 +89,7 @@
                 [-71.13213477505502, 42.237488877660525]
             ];
 
-            // animate marker
-            let counter = 0;
+            let counter  = 0;
             var backward = 0;
 
             // walk the coordinate counter

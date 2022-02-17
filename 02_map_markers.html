@@ -1,9 +1,7 @@
-<!-- ---------------------------------------- -->
-<!-- ------- Hello World Map + Marker ------- -->
-<!-- ---- lat/lng [-71.091542,42.358862] ---- -->
-<!-- ---------------------------------------- -->
-
-<!-- HWK1 using lat/long for Lobby 7 [-71.0932197, 42.3591364], not Killian Court -->
+<!-- ------------------------------------------ -->
+<!-- ----------- HWK 1 - Question 2 ----------- -->
+<!-- ----------- Marker on Lobby 7 ------------ -->
+<!-- ------------------------------------------ -->
 
 <!DOCTYPE html>
 
@@ -17,6 +15,7 @@
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
 
             <style>
+
                 body {margin:   0;
                       padding:  0;}
 
@@ -24,6 +23,7 @@
                       top:      0;
                       bottom:   0;
                       width:    100%;}
+
             </style>
 
     </head>
@@ -41,11 +41,10 @@
             var map = new mapboxgl.Map({
                 container: 'map',
                 style:     'mapbox://styles/mapbox/streets-v11',
-                center:    [-71.0932197, 42.3591364],
-                zoom:      12});
+                center:    [-71.09315075466816,42.359216824348636],
+                zoom:      14.5});
 
             // add marker to map
-
             var marker = new mapboxgl.Marker()
             .setLngLat([-71.0932197, 42.3591364])
             .addTo(map);
@@ -53,4 +52,5 @@
         </script>
 
     </body>
+    
 </html>

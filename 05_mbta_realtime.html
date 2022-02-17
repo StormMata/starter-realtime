@@ -1,4 +1,5 @@
 <!-- ------------------------------------------ -->
+<!-- ----------- HWK 1 - Question 4 ----------- -->
 <!-- ------- MBTA Real-Time Bus Tracker ------- -->
 <!-- ------------------------------------------ -->
 
@@ -9,12 +10,13 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Real Time Bus Tracker - Route 1</title>
+        <title>Bus Tracker - Route 1</title>
         <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
         <script src="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.js"></script>
         <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
 
             <style>
+
                 body {margin:   0;
                       padding:  0;}
 
@@ -36,13 +38,29 @@
             // api token
             mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rvcm1tYXRhIiwiYSI6ImNremVwMjhxZzA3ZmMydm16d2JlOG9oOGUifQ.My6NECnslilyi-VyQiOCIg';
 
-            // map instance
-            var map = new mapboxgl.Map({
-                container: 'map',
-                style:     'mapbox://styles/mapbox/streets-v11',
-                center:    [-71.104081, 42.365554],
-                zoom:      12
-            });
+            // Change map color based on time of day
+            const time = new Date();
+            hour = time.getHours();
+
+            if (hour > 6 && hour < 18) {
+
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style:     'mapbox://styles/mapbox/light-v10',
+                    center:    [-71.09126072506115,42.354424437134924],
+                    zoom:      13
+                });
+
+            }else{
+
+                var map = new mapboxgl.Map({
+                    container: 'map',
+                    style:     'mapbox://styles/mapbox/dark-v10',
+                    center:    [-71.09126072506115,42.354424437134924],
+                    zoom:      13
+                });
+
+            };
 
             // bus data from MBTA
             async function routeData(){
